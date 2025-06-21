@@ -1,0 +1,37 @@
+services:
+  apache:
+    image: httpd:2.4
+    container_name: container-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./docker/apache/000-default.conf:/usr/local/apache2/conf/sites-available/000-default.conf
+    depends_on:
+      - php
+      - db
+
+  php:
+    build:
+      context: ./docker/php
+    container_name: container-php
+    volumes:
+      - .:/var/www/html
+
+  db:
+    image: mariadb:latest
+    container_name: container-db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: container_main
+      MYSQL_USER: container
+      MYSQL_PASSWORD: passw0rd
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - .container-data:/var/lib/mysql
+
+volumes:
+  .container-data:
