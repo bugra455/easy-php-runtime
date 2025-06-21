@@ -50,6 +50,6 @@ A basic setup that mimics a real (sad) plain PHP server setup, based on Docker.
     docker compose up -d --build
     ```
 
-6.  🎉 Congrats! You saved yourself from installing a database, a web driver, and 10 different versions of a programming language to the root of your daily driver.
+6.  🎉 Congrats! You saved yourself from installing three databases, two web-servers, and 10 different versions of a programming language to the root of your daily driver.
 
 ![image](https://github.com/user-attachments/assets/f7af7237-7ba9-4a9f-ab00-e8a057d7a1ca)
